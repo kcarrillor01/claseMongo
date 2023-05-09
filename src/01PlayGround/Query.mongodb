@@ -1,3 +1,11 @@
 use("sample_training")
-db.zips.find({state:"NY"})
-
+//Con count se sabe cuantos documentos cumplen para la busqueda
+db.grades.find().count()
+//Con limit se limita la cantidad de documentos que se muestran
+db.grades.find().limit(4)
+//con Skip se salta una cantidad de docmentos 
+db.grades.find({"student_id":0}).skip(2)
+//Se pueden concatenar skip y limit
+db.grades.find({"student_id":1}).skip(1).limit(3)
+//Para no mostrar todo sino solo ciertos atributos, es necesario invocar otro {} seguido de una coma, dentro colocar los datos a poner una sintaxis como la siguiente:
+db.grades.find({"class_id":60},{"_id":0,student_id:1})
